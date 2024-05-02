@@ -8,8 +8,10 @@ opencv-python = "*"
 scikit-image = "*"
 matplotlib = "*"
 tk = "*"
+colorama = "*"
+tqdm = "*"
 
 [dev-packages]
 
 [requires]
-python_version = "3.10"
+python_version = "3.12"
