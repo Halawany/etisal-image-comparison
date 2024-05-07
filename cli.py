@@ -5,6 +5,7 @@ from tqdm import tqdm
 import os
 import pickle
 import time
+from connection import TestToolDB
 
 class ImageComparator:
     def __init__(self, image1_path, cache_file='image1_cache.pkl'):
@@ -82,5 +83,9 @@ if __name__ == "__main__":
 
     # Print comparison result
     comparator.print_result()
+    db = TestToolDB(dbname='image_comparison', user='postgres', password='eslam010', host='localhost', port=5432)
+    db.connect()
+    db.insert_data(sn='123456', pre_saved_image='image1.jpg', image='image2.jpg', result=ssi_score)
+    db.disconnect()
     print(f"Structural Similarity Index with image2: {ssi_score}")
     print("Whole process time = %s" % (time.time() - start_time))
